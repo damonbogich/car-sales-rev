@@ -6,10 +6,12 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import {reducer} from './reducers';
 
+import {BrowserRouter as Router} from 'react-router-dom';
+
 import 'bulma/css/bulma.css';
 import './styles.scss';
 
 const store = createStore(reducer);
 
 const rootElement = document.getElementById('root');
-ReactDOM.render(<Provider store={store}><App /></Provider>, rootElement);
+ReactDOM.render(<Provider store={store}> <Router><App /></Router></Provider>, rootElement);

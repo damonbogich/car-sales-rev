@@ -1,14 +1,26 @@
-import {ADD_FEATURE, REMOVE_FEATURE} from '../actions';
+import {ADD_FEATURE, REMOVE_FEATURE, SET_CAR} from '../actions';
 
 const initialState = {
     additionalPrice: 0,
-    car: {
-        price: 26395,
-        name: '2019 Ford Mustang',
-        image:
-        'https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg',
-        features: []
-    },
+    cars: [
+        {
+            id: 1,
+            price: 26395,
+            name: '2019 Ford Mustang',
+            image:
+            'https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg',
+            features: []
+        },
+        {
+            id: 2,
+            price: 35000,
+            name: '2020 Ferarri Enzo',
+            image:
+            'https://wallpapercave.com/wp/wp2538923.jpg',
+            features: []
+        }
+    ],
+    car: {},
     additionalFeatures: [
         { id: 1, name: 'V-6 engine', price: 1500 },
         { id: 2, name: 'Racing detail package', price: 1500 },
@@ -16,6 +28,7 @@ const initialState = {
         { id: 4, name: 'Rear spoiler', price: 250 }
     ]
 };
+
 
 export const reducer = (state=initialState, action) => {
     switch(action.type) {
@@ -44,6 +57,16 @@ export const reducer = (state=initialState, action) => {
                     features: updatedCarFeatures
                 },
                 additionalFeatures: updatedAdditionalFeatures
+            }
+        }
+        case SET_CAR: {
+            console.log('set car entered in reducer')
+            console.log(action.payload, 'payload')
+            let updatedCar = action.payload;
+            console.log(updatedCar, 'updated car')
+            return {
+                ...state,
+                car: updatedCar
             }
         }
     
