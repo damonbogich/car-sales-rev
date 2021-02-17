@@ -26,5 +26,4 @@ const mapStateToProps = state => {
   }
 }
 
-// export default AddedFeatures;
 export default connect(mapStateToProps, {})(AddedFeatures);
